@@ -47,6 +47,10 @@ final class OpenCalendarWP
             register_deactivation_hook( __FILE__, array( self::$instance, 'deactivation' ) );
 
             register_uninstall_hook( __FILE__, array( self::$instance, 'uninstall' ) );
+
+            spl_autoload_register( array( self::$instance, 'autoloader' ) );
+
+            new OCWP_Admin_Menu_Settings();
         }
 
         return self::$instance;
@@ -94,6 +98,40 @@ final class OpenCalendarWP
             exit();
 
         // This section intentionally left blank.
+    }
+
+    /**
+     * @param $class_name
+     * @return void
+     */
+    public function autoloader( $class_name )
+    {
+        if( class_exists( $class_name ) ) return;
+
+        if (false !== strpos($class_name, 'OCWP_')) {
+            $class_name = strtolower( str_replace('OCWP_', '', $class_name) );
+            $classes_dir = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR;
+            $class_file = str_replace('_', DIRECTORY_SEPARATOR, $class_name) . '.php';
+            if (file_exists($classes_dir . $class_file)) {
+                require_once $classes_dir . $class_file;
+            }
+        }
+    }
+
+    /**
+     * @param string $file_name
+     * @param array $data
+     * @return string|void
+     */
+    public static function render( $file_name = '', array $data = array() )
+    {
+        if( ! $file_name ) return;
+
+        extract( $data );
+
+        ob_start();
+        include self::$dir . 'includes/views/' . $file_name;
+        return ob_get_clean();
     }
 }
 
