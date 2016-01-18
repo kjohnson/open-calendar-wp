@@ -33,6 +33,7 @@ var CalendarLayout = Marionette.LayoutView.extend({
 });
 
 var HTMLView = Marionette.ItemView.extend({
+    tag: 'ocwp-html',
     template: "#ocwp-tmpl-html",
 
     initialize: function( data ) {
@@ -48,10 +49,12 @@ var HTMLView = Marionette.ItemView.extend({
 });
 
 var HeaderView = Marionette.ItemView.extend({
+    tag: 'ocwp-header',
     template: "#ocwp-tmpl-header",
 });
 
 var MainView = Marionette.ItemView.extend({
+    tag: 'ocwp-main',
     template: "#ocwp-tmpl-main",
 });
 
