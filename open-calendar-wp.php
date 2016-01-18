@@ -53,6 +53,8 @@ final class OpenCalendarWP
             new OCWP_Admin_CPT_Events();
             new OCWP_Admin_Menu_Calendar();
             new OCWP_Admin_Menu_Settings();
+
+            new OCWP_Display_Shortcodes();
         }
 
         return self::$instance;
