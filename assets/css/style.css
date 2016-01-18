@@ -1,0 +1,178 @@
+.calendar {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.calendar a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.calendar header {
+    padding: 5px;
+    border-top: 2px solid black;
+}
+
+.calendar nav {
+    display: block;
+    width: 100%;
+}
+
+.calendar nav a {
+    position: absolute;
+    padding: .5em 1em;
+}
+
+.calendar nav a.next {
+    right: 0;
+}
+
+.calendar nav a.next:after {
+    content: '>';
+}
+
+.calendar nav a.prev {
+    left: 0;
+}
+
+.calendar nav a.prev:after {
+    content: '<';
+}
+
+.calendar .month,
+.calendar .year {
+    display: block;
+    text-align: center;
+}
+
+.calendar main ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.calendar main ul:first-child {
+    display: none;
+}
+
+.calendar main ul li {
+    height: 4em;
+    border-top: 1px solid black;
+    padding: .3rem .5em .5rem;
+}
+
+.calendar main ul li:empty {
+    display: none;
+}
+
+.calendar main ul li .event {
+    display: block;
+    min-height: 1rem;
+    overflow: hidden;
+    padding-left: 1.5rem;
+}
+
+@media screen and ( min-width: 650px ) {
+    .calendar main ul li .event {
+        color: inherit !important;
+    }
+}
+
+@media screen and ( min-width: 400px) {
+    .calendar main {
+        width: 100%;
+        border: 1px solid red;
+        display: table;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+    .calendar main ul {
+        margin: 0;
+        padding: 0;
+        display: table-row;
+    }
+    .calendar main ul:first-child {
+        display: table-row;
+        text-align: center;
+    }
+    .calendar main ul:first-child li {
+        padding: 0 0 .3em 0;
+        height: 3em;
+        vertical-align: bottom;
+    }
+    .calendar main ul li {
+        position: relative;
+        margin: 0;
+        width: 14.285%;
+        overflow: hidden;
+        display: table-cell;
+        border: 1px solid black;
+        border-collapse: collapse;
+        box-sizing: border-box;
+    }
+    .calendar main ul li:empty {
+        display: table-cell;
+    }
+    .calendar main ul li.today {
+        background-color: grey;
+    }
+    .calendar main ul li.holiday {
+        background-color: lightgrey;
+    }
+    .calendar main ul li .event {
+        display: block;
+        width: 100%;
+        margin-top: .5rem;
+        background-color: red;
+        font-size: .8em;
+        width: auto;
+        padding: .3rem;
+        color: transparent;
+
+    }
+}
+
+/*
+ * Calendario Theme
+ */
+.calendar--calendario {
+    color: #686A6E;
+    background-color: #F6F6F6;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+.calendar--calendario header {
+    border-top-color: #EF4F69;
+    background-color: #FFFFFF;
+}
+
+.calendar--calendario main {
+    width: 90%;
+    margin: auto;
+}
+
+.calendar--calendario main ul:first-child {
+    color: #EF4F69;
+}
+
+.calendar--calendario main ul:first-child li {
+    border-color: transparent;
+    border-bottom-color: #DDD;
+}
+
+.calendar--calendario main ul li {
+    border-color: #DDDDDD;
+}
+
+.calendar--calendario main ul li.today {
+    color: white;
+}
+
+.calendar--calendario main ul li.today {
+    background-color: #EF4F69;
+}
+
+.calendar--calendario main ul li .event {
+    background-color: #EF4F69;
+}
