@@ -50,6 +50,8 @@ final class OpenCalendarWP
 
             spl_autoload_register( array( self::$instance, 'autoloader' ) );
 
+            new OCWP_Admin_CPT_Events();
+            new OCWP_Admin_Menu_Calendar();
             new OCWP_Admin_Menu_Settings();
         }
 
@@ -77,7 +79,8 @@ final class OpenCalendarWP
      */
     public function activation()
     {
-        // This section intentionally left blank.
+        // TODO: CPT rewrite not being applied on activation. https://codex.wordpress.org/Function_Reference/register_post_type#Flushing_Rewrite_on_Activation
+        flush_rewrite_rules(); // For CPT re-writes
     }
 
     /**
@@ -85,7 +88,7 @@ final class OpenCalendarWP
      */
     public function deactivation()
     {
-        // This section intentionally left blank.
+        flush_rewrite_rules(); // For CPT re-writes
     }
 
     /**

@@ -2,9 +2,16 @@
 
 final class OCWP_Admin_Menu_Settings extends OCWP_Abstracts_Submenu
 {
-    public $parent_slug = 'options-general.php';
+    public $parent_slug = 'open-calendar-wp';
 
-    public $page_title = 'Open Calendar';
+    public $menu_slug = 'open-calendar-wp-settings';
+
+    public function __construct()
+    {
+        $this->page_title = __( 'Settings', 'open-calendar-wp' );
+
+        parent::__construct();
+    }
 
     public function display()
     {
