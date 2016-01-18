@@ -51,6 +51,7 @@ final class OpenCalendarWP
             spl_autoload_register( array( self::$instance, 'autoloader' ) );
 
             new OCWP_Admin_CPT_Events();
+
             new OCWP_Admin_Menu_Calendar();
             new OCWP_Admin_Menu_Settings();
 
@@ -130,7 +131,7 @@ final class OpenCalendarWP
      */
     public static function render( $file_name = '', array $data = array() )
     {
-        if( ! $file_name ) return;
+        if( ! $file_name ) return '';
 
         extract( $data );
 
